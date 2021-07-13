@@ -340,6 +340,7 @@ html {
   display: flex;
   flex-direction: row;
   align-items: center;
+  box-sizing: border-box;
 }
 .question-label-dissociation {
   font-size: 30px;
