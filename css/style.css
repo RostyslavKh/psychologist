@@ -337,10 +337,10 @@ html {
 .question-label {
   font-size: 50px;
   color: var(--txt-c-light);
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   align-items: center;
-  box-sizing: border-box;
+  box-sizing: border-box; */
 }
 .question-label-dissociation {
   font-size: 30px;
@@ -365,7 +365,8 @@ html {
   margin-right: 30px;
   content: '  ';
   border-radius: 50%;
-  display: table;
+  display: inline-block;
+  vertical-align: middle;
   border: 5px solid rgb(255, 255, 255);
   background: var(--c-grey-light);
   box-sizing: border-box;
@@ -379,7 +380,7 @@ html {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .large {
   margin-bottom: 70px;
