@@ -1,2 +1,2 @@
 # psychologist
-psychological tests
+ 

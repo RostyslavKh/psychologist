@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link rel="stylesheet" href="fonts/fontawesome-free-5.15.3-web/css/all.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="body-main">
+    <header class="header" id="start">
+      <div class="header-first-line">
+        <img class="logo-header" src="img/ru-w.svg" alt="logo" />
+        <!-- div class="change-language">
+          <span class="language-ua">UA</span>
+          <span class="language-ru">RU</span>
+        </div> -->
+        <!-- <div class="header-mobile-menu">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </div> -->
+        <div class="phone-number">
+          <span class="phone-first">+38 (067)</span>
+          <span class="phone-second"> 500 83 18</span>
+        </div>
+      </div>
+      <div class="header-second-line"></div>
+      <h2 class="title-online-test">Онлайн тестування</h2>
+    </header>
+
+    <div class="main-section">
+      <section class="befor-section">
+        <h2 class="befor-title">Перед тестуванням:</h2>
+        <ol class="befor-list">
+          Пропонуємо Вам тестування і просимо, задля безпеки персональних даних, створити власний код для підпису:
+          <li class="befor-list-item">перша буква прізвища;</li>
+          <li class="befor-list-item">перша буква по-батькові;</li>
+          <li class="befor-list-item">число Вашого народження у двоцифровому форматі (21, 03 тощо);</li>
+          <li class="befor-list-item">дві останні цифри року Вашого народження;</li>
+          <li class="befor-list-item">цифру “1”, якщо Ви чоловік або цифру “2” - якщо жінка.</li>
+        </ol>
+        <h3 class="befor-example-title">Приклад:</h3>
+        <h4 class="befor-example">Петрова Марія Вікторівна, 5 червня 1990 р.н. Її код - ПВ05902</h4>
+        <div class="input-name-section">
+          <input type="text" name="pressmark" class="input-user-name" id="pressmark-id" />
+          <button class="btn btn-warning befor-submit-button" id="befor-submit" disabled>Створити підпис</button>
+        </div>
+      </section>
+
+      <section class="table-section">
+        <div class="table-header">
+          <div class="user-name"></div>
+          <div class="date"></div>
+        </div>
+
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col" class="table-colum">#</th>
+              <th scope="col" class="table-colum">Тест</th>
+              <th scope="col" class="table-colum">Результат</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="test-number">1</th>
+              <td class="test-name">
+                <a href="#name-of-test-main" class="test-links-text" id="event-influance-link"> Шкала впливу події</a>
+              </td>
+              <td class="test-result" id="event-infliance-test-result">0</td>
+            </tr>
+            <tr>
+              <th scope="row" class="test-number">2</th>
+              <td class="test-name">
+                <a href="#name-of-test-main" class="test-links-text" id="test-selfEstim-link"
+                  >Шкала оцінки ПТСР PCL - C</a
+                >
+              </td>
+              <td class="test-result" id="selfEstim-result-table">0</td>
+            </tr>
+            <tr>
+              <th scope="row" class="test-number">3</th>
+              <td class="test-name">
+                <a href="#name-of-test-main" class="test-links-text" id="test-basicPH-link">Basic PH</a>
+              </td>
+              <td class="test-result" id="basicPH-result-table">0</td>
+            </tr>
+            <tr>
+              <th scope="row" class="test-number">4</th>
+              <td class="test-name">
+                <a href="#name-of-test-main" class="test-links-text" id="test-dissociation-link"
+                  >Шкала диссоціації DES</a
+                >
+              </td>
+              <td class="test-result" id="dissociation-result-table">0</td>
+            </tr>
+            <tr>
+              <th scope="row" class="test-number">5</th>
+              <td class="test-name">
+                <a href="#name-of-test-main" class="test-links-text" id="test-anxiete-link">
+                  Шкала тревоги (BAI) BECK</a
+                >
+              </td>
+              <td class="test-result" id="anxiety-result-table">0</td>
+            </tr>
+            <tr>
+              <th scope="row" class="test-number">6</th>
+              <td class="test-name">
+                <a href="#name-of-test-main" class="test-links-text" id="test-depression-link">Шкала депрессії BECK</a>
+              </td>
+              <td class="test-result" id="depression-result-table">0</td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-success send-button" id="send-results-btn">Відправити результати</button>
+      </section>
+    </div>
+
+    <!-- <a href="results.html" class="">ссылка</a></i> -->
+    <div class="footer">
+      <div class="header-social-links">
+        <a href="https://www.facebook.com/RostyslavKh"><i class="fab fa-facebook social"></i></a>
+        <a href="tg://resolve?domain=@Rostislavovich1976"><i class="fab fa-telegram social"></i></a>
+        <a href="viber://add?number=380675008318"><i class="fab fa-viber social"></i></a>
+      </div>
+    </div>
+
+    <!-- Модалка для тестов -->
+    <div class="modal" id="tests-modal">
+      <div class="name-of-test-M" id="name-of-test-main-M">Название теста</div>
+      <!-- <div class="test-description-M">Описание теста</div> -->
+      <div class="questions"></div>
+      <div class="modal-footer">
+        <button class="btn btn-warning start-question-button" id="start-question-M">Почати тестування</button>
+        <button class="btn btn-primary next-question-button" id="next-question-M">Наступне запитання</button>
+        <button class="btn btn-success finish-test-button" id="finish-button">Завершити тест</button>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- <script type="text/javascript" src="source/questionsAnxiety.json"></script> -->
+    <script src="js/tests_data.js"></script>
+    <script src="js/swiper.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/submit.js"></script>
+    <script src="js/database.js"></script>
+  </body>
+</html>
