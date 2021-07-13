@@ -364,7 +364,7 @@ html {
   margin-right: 30px;
   content: '  ';
   border-radius: 50%;
-  display: inline-table;
+  display: table;
   border: 5px solid rgb(255, 255, 255);
   background: var(--c-grey-light);
   box-sizing: border-box;
