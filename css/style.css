@@ -367,7 +367,7 @@ html {
   display: inline-table;
   border: 5px solid rgb(255, 255, 255);
   background: var(--c-grey-light);
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 .question-input[type='radio']:checked + .question-label:before,
 .question-input[type='checkbox']:checked + .question-label:before {
