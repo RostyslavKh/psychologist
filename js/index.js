@@ -632,11 +632,11 @@ function questionsBasicPHRender(number, questions, htmlPlace) {
 
 function resultMessageBasicPHRender(subSumma, htmlPlace) {
   let messageHTML = `<p class = "result-message">B 1 – Віра ${(subSumma[0] / 6).toFixed(2)}</p>
-    <p class = "result-message"> A 2 – Емоції: ${(subSumma[1] / 6).toFixed(2)}</p>
-    <p class = "result-message">S 3 – Соціум, стосунки: ${(subSumma[2] / 6).toFixed(2)}</p>
-    <p class = "result-message">I 4 – Уява: ${(subSumma[3] / 6).toFixed(2)}</p>
-    <p class = "result-message"> C 5 – Розум: ${(subSumma[4] / 6).toFixed(2)}</p>
-    <p class = "result-message">Ph 6 – Тіло, фізична діяльність: ${(subSumma[5] / 6).toFixed(2)}</p>
+    <p class = "result-message"> A 2 – Емоції: ${(subSumma[1] / 6).toFixed(2)} з 6.00</p>
+    <p class = "result-message">S 3 – Соціум, стосунки: ${(subSumma[2] / 6).toFixed(2)} з 6.00</p>
+    <p class = "result-message">I 4 – Уява: ${(subSumma[3] / 6).toFixed(2)} з 6.00</p>
+    <p class = "result-message"> C 5 – Розум: ${(subSumma[4] / 6).toFixed(2)} з 6.00</p>
+    <p class = "result-message">Ph 6 – Тіло, фізична діяльність: ${(subSumma[5] / 6).toFixed(2)} з 6.00</p>
     
     <p class = "result-message"> Ізраїльський психолог Mooli Lahad прийшов до висновку, що зазвичай долати стрес і кризу допомагають В (belief and values) - віра (переконання), А (affect and emotions) - почуття, S (sociability) - соціалізація (підтримка родини, групи, друзів), I (imagination and creativity) - уява, C (cognition and thought) – мислення (когніції, думки), Ph (physiological activity) - фізичне (тіло, вправи). Всі використовують ці ресурси, однак часто користуючись активно одним-двома ресурсами, не враховують інші. Цей тест допомогає дізнатися які ресурси є провідними саме для вас, а які ви використовуєте менше. </p>`
   htmlPlace.innerHTML = messageHTML
