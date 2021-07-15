@@ -631,7 +631,7 @@ function questionsBasicPHRender(number, questions, htmlPlace) {
 }
 
 function resultMessageBasicPHRender(subSumma, htmlPlace) {
-  let messageHTML = `<p class = "result-message">B 1 – Віра ${(subSumma[0] / 6).toFixed(2)}</p>
+  let messageHTML = `<p class = "result-message">B 1 – Віра ${(subSumma[0] / 6).toFixed(2)} з 6.00</p>
     <p class = "result-message"> A 2 – Емоції: ${(subSumma[1] / 6).toFixed(2)} з 6.00</p>
     <p class = "result-message">S 3 – Соціум, стосунки: ${(subSumma[2] / 6).toFixed(2)} з 6.00</p>
     <p class = "result-message">I 4 – Уява: ${(subSumma[3] / 6).toFixed(2)} з 6.00</p>
