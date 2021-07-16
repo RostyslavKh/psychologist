@@ -177,7 +177,11 @@ testsDepressionEvent.addEventListener('click', (event) => {
     answers.forEach((answer) => {
       if (answer.checked == true) {
         isChecked = true
-        fileDepressionTestResult.push(questionsDepression[questionNumber][answer.value])
+        // fileDepressionTestResult.push(questionsDepression[questionNumber][answer.value])
+        fileItem.push(questionsDepression[questionNumber][answer.value])
+        fileItem.push(answer.value)
+        fileDepressionTestResult.push(fileItem)
+        fileItem = []
         summa += +answer.value
       }
     })
@@ -327,7 +331,6 @@ fileEventInfluanceTestResultName = 'Шкала впливу події'
 let allAnswersEventInfluance = []
 
 testsEventInfluance.addEventListener('click', (event) => {
-  // event.preventDefault()
   testName.innerText = testsEventInfluance.innerText
   wripper.innerHTML = `<div class="test-description-M">${questionsEventInfluance.description}</div>`
 
