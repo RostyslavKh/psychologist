@@ -3,6 +3,10 @@ let userName
 let baseResult
 let testsDataBase
 
+function isValid(string) {
+  return string.length >= 7
+}
+
 const beforSection = document.querySelector('.befor-section')
 const tableSection = document.querySelector('.table-section')
 const submitBtn = document.getElementById('befor-submit')
@@ -12,6 +16,50 @@ const fromBaseBtn = document.querySelector('#from-base')
 const userNameTable = document.querySelector('.user-name')
 const testsDateNow = document.querySelector('.date')
 
+window.addEventListener('load', () => {
+  userName = sessionStorage.getItem('userKey')
+  testsDate = sessionStorage.getItem('date')
+  if (userName && testsDate) {
+    userNameTable.innerHTML = `<span class="name-code">Ваш шифр:  </span> ${userName}`
+    testsDateNow.innerText = testsDate
+    beforSection.style.display = 'none'
+    tableSection.style.display = 'flex'
+
+    anxietyResultTable.innerText = sessionStorage.getItem('anxietyResult') || '0'
+    fileAnxietyTestResult = JSON.parse(sessionStorage.getItem('anxietyResultArray')) || []
+    fileAnxietyTestResult.result = sessionStorage.getItem('anxietyMessage') || ''
+
+    depressionResultTable.innerText = sessionStorage.getItem('depressionResult') || '0'
+    fileDepressionTestResult = JSON.parse(sessionStorage.getItem('depressionResultArray')) || []
+    fileDepressionTestResult.result = sessionStorage.getItem('depressionMessage') || ''
+
+    dissociationResultTable.innerText = sessionStorage.getItem('dissociationResult') || '0'
+    fileDissociationTestResult = JSON.parse(sessionStorage.getItem('dissociationResultArray')) || []
+    fileDissociationTestResult.result = sessionStorage.getItem('dissociationMessage') || ''
+
+    eventInfluanceResultTable.innerText = sessionStorage.getItem('evantInfluanceResult') || '0'
+    fileEventInfluanceTestResult = JSON.parse(sessionStorage.getItem('evantInfluanceResultArray')) || []
+    fileEventInfluanceTestResult.result = sessionStorage.getItem('eventInfluanceMessage') || ''
+
+    selfEstimResultTable.innerText = sessionStorage.getItem('selfEstimResult') || '0'
+    fileSelfEstimTestResult = JSON.parse(sessionStorage.getItem('selfEstimResultArray')) || []
+    fileSelfEstimTestResult.result = sessionStorage.getItem('selfEstimMessage') || ''
+
+    basicPHResultTable.innerText = sessionStorage.getItem('basicPHResult') || '0'
+    fileBasicPHTestResult = JSON.parse(sessionStorage.getItem('basicPHResultArray')) || []
+    fileBasicPHTestResult.result = sessionStorage.getItem('basicPH') || ''
+
+    console.log(
+      fileEventInfluanceTestResult,
+      fileSelfEstimTestResult,
+      fileBasicPHTestResult,
+      fileAnxietyTestResult,
+      fileDepressionTestResult,
+      fileDissociationTestResult
+    )
+  }
+})
+
 const listenerIsInput = (event) => (submitBtn.disabled = !isValid(inputName.value))
 inputName.addEventListener('input', listenerIsInput)
 
@@ -20,6 +68,8 @@ const listenerSubmit = (event) => {
   testsDate = new Date().toLocaleDateString()
   userNameTable.innerHTML = `<span class="name-code">Ваш шифр:  </span> ${userName}`
   testsDateNow.innerText = testsDate
+  sessionStorage.setItem('userKey', userName)
+  sessionStorage.setItem('date', testsDate)
   beforSection.style.display = 'none'
   tableSection.style.display = 'flex'
 
@@ -28,41 +78,37 @@ const listenerSubmit = (event) => {
 }
 submitBtn.addEventListener('click', listenerSubmit)
 
-function isValid(string) {
-  return string.length >= 7
-}
-
 const listenerSendBtn = (event) => {
   results = {
     name: userName,
     date: new Date().toLocaleDateString(),
     test1: {
-      testName: fileEventInfluanceTestResultName,
+      testName: questionsEventInfluance.name,
       testResult: fileEventInfluanceTestResult.result,
       answers: fileEventInfluanceTestResult,
     },
     test2: {
-      testName: fileSelfEstimTestResultName,
+      testName: questionsSelfEstim.name,
       testResult: fileSelfEstimTestResult.result,
       answers: fileSelfEstimTestResult,
     },
     test3: {
-      testName: fileBasicPHTestResultName,
+      testName: questionsBasicPH.name,
       testResult: fileBasicPHTestResult.result,
       answers: fileBasicPHTestResult,
     },
     test4: {
-      testName: fileDissociationTestResultName,
+      testName: questionsDissociation.name,
       testResult: fileDissociationTestResult.result,
       answers: fileDissociationTestResult,
     },
     test5: {
-      testName: fileAnxietyTestResultName,
+      testName: questionsAnxiety.name,
       testResult: fileAnxietyTestResult.result,
       answers: fileAnxietyTestResult,
     },
     test6: {
-      testName: fileDepressionTestResultName,
+      testName: questionsDepression.name,
       testResult: fileDepressionTestResult.result,
       answers: fileDepressionTestResult,
     },
@@ -70,9 +116,3 @@ const listenerSendBtn = (event) => {
   baseResult = TestResults.create(results).then(alert('Дані відправлені'))
 }
 sendBtn.addEventListener('click', listenerSendBtn)
-
-/* fromBaseBtn.addEventListener('click', () => {
-  baseResult = TestResults.get('GET', requestURL).then((response) => {
-    testsDataBase = response ? Object.keys(response).map((key) => ({ ...response[key], id: key })) : []
-  })
-}) */
