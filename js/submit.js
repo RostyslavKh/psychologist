@@ -49,14 +49,14 @@ window.addEventListener('load', () => {
     fileBasicPHTestResult = JSON.parse(sessionStorage.getItem('basicPHResultArray')) || []
     fileBasicPHTestResult.result = sessionStorage.getItem('basicPH') || ''
 
-    console.log(
+    /* console.log(
       fileEventInfluanceTestResult,
       fileSelfEstimTestResult,
       fileBasicPHTestResult,
       fileAnxietyTestResult,
       fileDepressionTestResult,
       fileDissociationTestResult
-    )
+    ) */
   }
 })
 
