@@ -59,7 +59,8 @@ testsAnxietyEvent.addEventListener('click', (event) => {
       if (questionNumber < questionsAnxiety.length) {
         questionAnxietyRender(questionNumber, questionsAnxiety, wripper)
       } else {
-        anxietyResultTable.innerText = summa
+        anxietyResultTable.innerHTML = `<h1 class="test-result" style = "color:#5aa23e">&#10004;</h1>`
+        // innerText = summa
         sessionStorage.setItem('anxietyResult', summa)
         sessionStorage.setItem('anxietyResultArray', JSON.stringify(fileAnxietyTestResult))
         nextButton.removeEventListener('click', listenerTest)
@@ -192,7 +193,8 @@ testsDepressionEvent.addEventListener('click', (event) => {
       if (questionNumber < questionsDepression.length) {
         questionDepressionRender(questionNumber, questionsDepression, wripper)
       } else {
-        depressionResultTable.innerText = summa
+        depressionResultTable.innerHTML = `<h1 class="test-result" style = "color:#5aa23e">&#10004;</h1>`
+        // innerText = summa
         sessionStorage.setItem('depressionResult', summa)
         sessionStorage.setItem('depressionResultArray', JSON.stringify(fileDepressionTestResult))
         nextButton.removeEventListener('click', listenerTest)
@@ -288,7 +290,8 @@ testsDissociationEvent.addEventListener('click', (event) => {
       if (questionNumber < questionsDissociation.length) {
         questionDissociationRender(questionNumber, questionsDissociation, wripper)
       } else {
-        dissociationResultTable.innerText = Number((summa / 28) * 10).toFixed(0) + '%'
+        dissociationResultTable.innerHTML = `<h1 class="test-result" style = "color:#5aa23e">&#10004;</h1>`
+        // Number((summa / 28) * 10).toFixed(0) + '%'
         sessionStorage.setItem('dissociationResult', dissociationResultTable.innerText)
         sessionStorage.setItem('dissociationResultArray', JSON.stringify(fileDissociationTestResult))
 
@@ -392,7 +395,8 @@ testsEventInfluance.addEventListener('click', (event) => {
         sumIntrusion = (subSumma(allAnswersEventInfluance, subScaleIntrusion) / 8).toFixed(2)
         sumHyperexcitation = (subSumma(allAnswersEventInfluance, subScaleHyperexcitation) / 6).toFixed(2)
         eventInfluanceResultTable.classList.add('test-result-even-Influance')
-        eventInfluanceResultTable.innerText = 'A:' + sumAvoidance + ' I:' + sumIntrusion + ' H:' + sumHyperexcitation
+        eventInfluanceResultTable.innerHTML = `<h1 class="test-result" style = "color:#5aa23e">&#10004;</h1>`
+        // 'A:' + sumAvoidance + ' I:' + sumIntrusion + ' H:' + sumHyperexcitation
         sessionStorage.setItem('evantInfluanceResult', eventInfluanceResultTable.innerText)
         sessionStorage.setItem('evantInfluanceResultArray', JSON.stringify(fileEventInfluanceTestResult))
 
@@ -500,7 +504,7 @@ testSelfEstimEvent.addEventListener('click', (event) => {
       if (questionNumber < questionsSelfEstim.length) {
         questionsSelfEstimRender(questionNumber, questionsSelfEstim, wripper)
       } else {
-        selfEstimResultTable.innerText = summa
+        selfEstimResultTable.innerHTML = `<h1 class="test-result" style = "color:#5aa23e">&#10004;</h1>`
         sessionStorage.setItem('selfEstimResult', selfEstimResultTable.innerText)
         sessionStorage.setItem('selfEstimResultArray', JSON.stringify(fileSelfEstimTestResult))
 
@@ -609,8 +613,8 @@ testsBasicPHEvent.addEventListener('click', (event) => {
             counter = 0
           }
           basicPHResultTable.classList.add('test-result-basicPH')
-          basicPHResultTable.innerText =
-            'B: ' +
+          basicPHResultTable.innerHTML = `<h1 class="test-result" style = "color:#5aa23e">&#10004;</h1>`
+          /*   'B: ' +
             subSummaBasicPH[0] +
             '  a: ' +
             subSummaBasicPH[1] +
@@ -621,7 +625,7 @@ testsBasicPHEvent.addEventListener('click', (event) => {
             '  c: ' +
             subSummaBasicPH[4] +
             '  PH: ' +
-            subSummaBasicPH[5]
+            subSummaBasicPH[5] */
         }
 
         sessionStorage.setItem('basicPHResult', basicPHResultTable.innerText)

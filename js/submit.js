@@ -48,15 +48,6 @@ window.addEventListener('load', () => {
     basicPHResultTable.innerText = sessionStorage.getItem('basicPHResult') || '0'
     fileBasicPHTestResult = JSON.parse(sessionStorage.getItem('basicPHResultArray')) || []
     fileBasicPHTestResult.result = sessionStorage.getItem('basicPH') || ''
-
-    /* console.log(
-      fileEventInfluanceTestResult,
-      fileSelfEstimTestResult,
-      fileBasicPHTestResult,
-      fileAnxietyTestResult,
-      fileDepressionTestResult,
-      fileDissociationTestResult
-    ) */
   }
 })
 
