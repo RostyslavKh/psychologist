@@ -61,7 +61,7 @@ testsAnxietyEvent.addEventListener('click', (event) => {
       } else {
         anxietyResultTable.innerHTML = `<h1 class="test-result" style = "color:#5aa23e">&#10004;</h1>`
         // innerText = summa
-        sessionStorage.setItem('anxietyResult', summa)
+        sessionStorage.setItem('anxietyResult', anxietyResultTable.innerText)
         sessionStorage.setItem('anxietyResultArray', JSON.stringify(fileAnxietyTestResult))
         nextButton.removeEventListener('click', listenerTest)
         nextButton.style.display = 'none'
@@ -195,7 +195,7 @@ testsDepressionEvent.addEventListener('click', (event) => {
       } else {
         depressionResultTable.innerHTML = `<h1 class="test-result" style = "color:#5aa23e">&#10004;</h1>`
         // innerText = summa
-        sessionStorage.setItem('depressionResult', summa)
+        sessionStorage.setItem('depressionResult', depressionResultTable.innerText)
         sessionStorage.setItem('depressionResultArray', JSON.stringify(fileDepressionTestResult))
         nextButton.removeEventListener('click', listenerTest)
         nextButton.style.display = 'none'
