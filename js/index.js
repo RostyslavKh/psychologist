@@ -180,7 +180,6 @@ testsDepressionEvent.addEventListener('click', (event) => {
     answers.forEach((answer) => {
       if (answer.checked == true) {
         isChecked = true
-        // fileDepressionTestResult.push(questionsDepression[questionNumber][answer.value])
         fileItem.push(questionsDepression[questionNumber][answer.value])
         fileItem.push(answer.value)
         fileDepressionTestResult.push(fileItem)
@@ -243,7 +242,6 @@ function resultMessageDepressionRender(summa, htmlPlace) {
       ? `<p class = "result-message"><strong>Ваш результат: <span style='color:red'>(${summa})</span></strong> — выраженная депрессия (средней тяжести) [20-29]</p>`
       : `<p class = "result-message"  ><strong>Ваш результат: <span style='color:red'>(${summa})</span></strong> — тяжёлая депрессия [30-63]</p>`
   htmlPlace.innerHTML = messageHTML
-  // fileDepressionTestResult.result = messageHTML
   return messageHTML
 }
 
@@ -673,6 +671,118 @@ function resultMessageBasicPHRender(subSumma, htmlPlace) {
     
     <p class = "result-message"> Ізраїльський психолог Mooli Lahad прийшов до висновку, що зазвичай долати стрес і кризу допомагають В (belief and values) - віра (переконання), А (affect and emotions) - почуття, S (sociability) - соціалізація (підтримка родини, групи, друзів), I (imagination and creativity) - уява, C (cognition and thought) – мислення (когніції, думки), Ph (physiological activity) - фізичне (тіло, вправи). Всі використовують ці ресурси, однак часто користуючись активно одним-двома ресурсами, не враховують інші. Цей тест допомогає дізнатися які ресурси є провідними саме для вас, а які ви використовуєте менше. </p>`
   htmlPlace.innerHTML = messageHTML
-  // fileBasicPHTestResult.result = messageHTML
+  return messageHTML
+}
+
+// Тест на ADHD
+const testsADHDEvent = document.querySelector('#test-adhd-link')
+const adhdResultTable = document.querySelector('#adhd-result-table')
+let fileADHDTestResult = []
+
+testsADHDEvent.addEventListener('click', (event) => {
+  testName.innerText = questionsADHD.name
+  wripper.innerHTML = `<div class="test-description-M">${questionsADHD.description}</div>`
+
+  testsModal.classList.add(MODAL_ACTIVE_CLASS)
+  document.body.classList.add(BODY_SCROLL_DISABLE_CLASS)
+
+  fileADHDResult = []
+  let questionNumber = 0
+  let summa = [0, 0, 0]
+  let result = []
+
+  const listenerStart = (event) => {
+    questionsRender(questionNumber, questionsADHD, wripper)
+    startButton.removeEventListener('click', listenerStart)
+    startButton.style.display = 'none'
+    nextButton.style.display = 'block'
+  }
+  startButton.addEventListener('click', listenerStart)
+
+  const listenerTest = (event) => {
+    let answers = document.getElementsByName('answer')
+    let isChecked = false
+    answers.forEach((answer) => {
+      if (answer.checked == true) {
+        isChecked = true
+        fileItem.push(questionsADHD[questionNumber])
+        fileItem.push(+answer.value)
+
+        fileItem.push(questionsADHD.answers[answer.value])
+        fileADHDResult.push(fileItem)
+        fileItem = []
+        let k = +answer.value < 2 ? 0 : +answer.value - 1
+        result.push(k)
+        summa[0] += k
+        /*   if (questionNumber in questionsADHD.keyAD) {
+          console.log(questionNumber, k)
+          summa[1] += k
+        } else {
+          summa[2] += k
+        } */
+      }
+    })
+    if (isChecked) {
+      questionNumber++
+      if (questionNumber < questionsADHD.length) {
+        questionsRender(questionNumber, questionsADHD, wripper)
+      } else {
+        adhdResultTable.innerHTML = `<h1 class="test-result" style = "color:#5aa23e">&#10004;</h1>`
+        // innerText = summa
+
+        for (let m = 0; m < questionsADHD.keyAD.length; m++) {
+          summa[1] += result[questionsADHD.keyAD[m] - 1]
+        }
+        for (let m = 0; m < questionsADHD.keyHD.length; m++) {
+          summa[2] += result[questionsADHD.keyHD[m] - 1]
+        }
+
+        sessionStorage.setItem('adhdResult', adhdResultTable.innerText)
+        sessionStorage.setItem('ADHDResultArray', JSON.stringify(fileADHDResult))
+        nextButton.removeEventListener('click', listenerTest)
+        nextButton.style.display = 'none'
+
+        fileADHDResult.result = resultMessageADHDRender(summa, wripper)
+        sessionStorage.setItem('ADHDMessage', fileADHDResult.result)
+
+        finishButton.style.display = 'block'
+        const listenerFinish = (event) => {
+          finishButton.style.display = 'none'
+          startButton.style.display = 'block'
+          finishButton.removeEventListener('click', listenerFinish)
+          testsModal.classList.remove(MODAL_ACTIVE_CLASS)
+          document.body.classList.remove(BODY_SCROLL_DISABLE_CLASS)
+        }
+        finishButton.addEventListener('click', listenerFinish)
+      }
+    } else {
+      alert('Вы не ответили на вопрос')
+    }
+  }
+  nextButton.addEventListener('click', listenerTest)
+})
+
+function questionsRender(number, questions, htmlPlace) {
+  let html
+  html = ` <h3 class="question-title"> ${questions[number]} </h3>`
+  for (j = 0; j < questions.answers.length; j++) {
+    html += `
+      <div class="question-item large">
+        <input class="question-input" type="radio" name="answer" value= ${j} id="input${j}">
+        <label for = "input${j}" class = "question-label">${questions.answers[j]}
+      </div>
+      `
+  }
+  html += `<br><h4 class="question-number">Вопрос ${number + 1} из ${questions.length}</h4>`
+
+  htmlPlace.innerHTML = html
+}
+
+function resultMessageADHDRender(summa, htmlPlace) {
+  let messageHTML = `<p class = "result-message"> <span style='color:blue'>Гиперактивность: </span> <strong>${summa[2]}</strong> из 27 </p>
+      <p class = "result-message"> <span style='color:blue'>Дифецит внимания: </span> <strong>${summa[1]}</strong> из 27 </p>
+      <p class = "result-message"> <span style='color:blue'>Общий уровень СДВГ: </span> <strong>${summa[0]}</strong> из 54 </p>`
+
+  htmlPlace.innerHTML = messageHTML
   return messageHTML
 }

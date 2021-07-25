@@ -33,6 +33,10 @@ window.addEventListener('load', () => {
     fileDepressionTestResult = JSON.parse(sessionStorage.getItem('depressionResultArray')) || []
     fileDepressionTestResult.result = sessionStorage.getItem('depressionMessage') || ''
 
+    adhdResultTable.innerText = sessionStorage.getItem('adhdResult') || '0'
+    fileADHDResult = JSON.parse(sessionStorage.getItem('ADHDResultArray')) || []
+    fileADHDResult.result = sessionStorage.getItem('ADHDMessage') || ''
+
     dissociationResultTable.innerText = sessionStorage.getItem('dissociationResult') || '0'
     fileDissociationTestResult = JSON.parse(sessionStorage.getItem('dissociationResultArray')) || []
     fileDissociationTestResult.result = sessionStorage.getItem('dissociationMessage') || ''
@@ -102,6 +106,11 @@ const listenerSendBtn = (event) => {
       testName: questionsDepression.name,
       testResult: fileDepressionTestResult.result,
       answers: fileDepressionTestResult,
+    },
+    test7: {
+      testName: questionsADHD.name,
+      testResult: fileADHDResult.result,
+      answers: fileADHDResult,
     },
   }
   baseResult = TestResults.create(results).then(alert('Дані відправлені'))
