@@ -438,3 +438,6 @@ html {
 .social {
   cursor: pointer;
 }
+.social:hover {
+  color: var(--c-accent-two);
+}
