@@ -36,7 +36,7 @@ window.addEventListener('load', () => {
     adhdResultTable.innerText = sessionStorage.getItem('adhdResult') || '0'
     fileADHDResult = JSON.parse(sessionStorage.getItem('ADHDResultArray')) || []
     fileADHDResult.result = sessionStorage.getItem('ADHDMessage') || ''
-    // console.log('  1111 ', fileADHDResult.result, fileDepressionTestResult.result)
+    console.log('  1111 ', fileADHDResult.result, fileDepressionTestResult.result)
 
     dissociationResultTable.innerText = sessionStorage.getItem('dissociationResult') || '0'
     fileDissociationTestResult = JSON.parse(sessionStorage.getItem('dissociationResultArray')) || []
