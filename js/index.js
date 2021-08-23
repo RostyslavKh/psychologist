@@ -739,11 +739,11 @@ testsADHDEvent.addEventListener('click', (event) => {
 
         sessionStorage.setItem('adhdResult', adhdResultTable.innerText)
         sessionStorage.setItem('ADHDResultArray', JSON.stringify(fileADHDResult))
-        nextButton.removeEventListener('click', listenerTest)
-        nextButton.style.display = 'none'
-
         fileADHDResult.result = resultMessageADHDRender(summa, wripper)
         sessionStorage.setItem('ADHDMessage', fileADHDResult.result)
+
+        nextButton.removeEventListener('click', listenerTest)
+        nextButton.style.display = 'none'
 
         finishButton.style.display = 'block'
         const listenerFinish = (event) => {

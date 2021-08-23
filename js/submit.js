@@ -62,6 +62,10 @@ inputName.addEventListener('input', listenerIsInput)
 const listenerSubmit = (event) => {
   userName = inputName.value.trim()
   testsDate = new Date().toLocaleDateString()
+  Enter.create({
+    name: userName,
+    date: testsDate,
+  })
   userNameTable.innerHTML = `<span class="name-code">Ваш шифр:  </span> ${userName}`
   testsDateNow.innerText = testsDate
   sessionStorage.setItem('userKey', userName)
