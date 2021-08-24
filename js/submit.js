@@ -112,11 +112,11 @@ const listenerSendBtn = (event) => {
       testResult: fileDepressionTestResult.result,
       answers: fileDepressionTestResult,
     },
-    test7: {
+    /*  test7: {
       testName: questionsADHD.name,
       testResult: fileADHDResult.result,
       answers: fileADHDResult,
-    },
+    }, */
   }
   baseResult = TestResults.create(results).then(alert('Дані відправлені'))
 }
